@@ -1,0 +1,59 @@
+name: acadameet
+description: "An App that books appointments physical or video meeting between students and and their college faculty."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  js:
+  dio:
+  get:
+  intl:
+  lottie:
+  stacked:
+  aad_oauth:
+  url_strategy:
+  firebase_core:
+  stacked_shared:
+  buttons_tabbar:
+  cloud_firestore:
+  stacked_services:
+  responsive_builder:
+  responsive_web_layout:
+    path: /home/tratum/Coding/flutter-repo/Packages/responsiveLayout/responsive-web-layout
+  flutter_secure_storage:
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+
+  fonts:
+    - family: GlacialIndifference
+      fonts:
+        - asset: assets/fonts/GlacialIndifference/GlacialIndifference-Regular.otf
+        - asset: assets/fonts/GlacialIndifference/GlacialIndifference-Bold.otf
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
