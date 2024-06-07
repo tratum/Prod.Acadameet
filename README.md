@@ -29,11 +29,15 @@ A Web App that books appointments physical or video meeting between students and
 
 ## Configuration
 1. Create `keys.dart` file in lib/config/
+   <br>
+
    ```bash
    cd lib/config
    touch keys.dart    
    ```
 2. Populate `keys.dart`
+   <br>
+    
    ```
    const String tenant = "organizations";
    const String redirectUrl = "REDIRECT_URI";
