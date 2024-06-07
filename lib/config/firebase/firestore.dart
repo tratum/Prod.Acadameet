@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
-import '../microsoft_functions.dart';
+import '../keys/keys.dart';
+import '../microsoft/microsoft_functions.dart';
 
 class Database {
   static void storeAuthData({
@@ -23,7 +23,7 @@ class Database {
         "businessPhone": bPhone,
         "branch":
             RegExp(r'\[([^\]]+)\]').firstMatch(displayName)?.group(1) ?? '',
-        "secretKey": "Xgyc0Ses01KGS06GhTHO1njNmB3i9SMcWPTjkoUKgtvPWWtiY7",
+        "secretKey": firebaseSecretKey,
       },
     ).onError((e, _) => debugPrint("Error writing document: $e"));
   }
@@ -38,7 +38,7 @@ class Database {
     required String scheduleDate,
     required String scheduleTime,
   }) async {
-    final String? id = await getAuthID();
+    final String? id = await getUID();
     final String? uName = await getUserName();
     if (id != null && uName != null) {
       final mData = <String, dynamic>{
@@ -69,7 +69,7 @@ class Database {
   }
 
   static Future<List<QueryDocumentSnapshot<Object?>>> getMeetings() async {
-    final String? id = await getAuthID();
+    final String? id = await getUID();
     final String? uName = await getUserName();
     if (id != null && uName != null) {
       final snapshot = await FirebaseFirestore.instance

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_web_layout/responsive_web_layout.dart';
 import 'package:stacked/stacked.dart';
 
-class HomeViewMobile extends ViewModelWidget<HomeViewModel>{
+class HomeViewMobile extends ViewModelWidget<HomeViewModel> {
   const HomeViewMobile({super.key});
 
   @override
@@ -18,5 +18,4 @@ class HomeViewMobile extends ViewModelWidget<HomeViewModel>{
       ),
     );
   }
-
 }

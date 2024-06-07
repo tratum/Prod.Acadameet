@@ -1,24 +1,65 @@
-import 'package:acadameet/app/app.locator.dart';
-import 'package:acadameet/app/app.router.dart';
 import 'package:dio/dio.dart';
+import 'msal_interop.dart';
+import '../../app/app.router.dart';
+import '../../app/app.locator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import '../../../config/firebase/firestore.dart';
 import 'package:stacked_services/stacked_services.dart';
-
-import '../../config/firebase/firestore.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 const storage = FlutterSecureStorage();
 final dio = Dio();
 
-Future<void> saveAccessToken(String? accessToken) async {
-  await storage.write(key: 'access_token', value: accessToken);
+// Future<void> saveAccessToken(String? accessToken) async {
+//   await storage.write(key: 'access_token', value: accessToken);
+// }
+//
+// Future<bool?> authIDSwitch() async {
+//   var sKey = await storage.read(key: 'user_auth_id');
+//   if (sKey!.isNotEmpty) {
+//     return true;
+//   } else if (sKey.isEmpty) {
+//     return false;
+//   } else {
+//     return null;
+//   }
+// }
+//
+// Future<void> saveIDToken(String? idToken) async {
+//   await storage.write(key: 'id_token', value: idToken);
+// }
+//
+// Future<void> deleteAccessToken() async {
+//   await storage.delete(key: 'access_token');
+// }
+//
+// Future<void> deleteIDToken() async {
+//   await storage.delete(key: 'id_token');
+// }
+
+Future<void> microsoftSignIn() async {
+  try {
+    await signIn();
+  } catch (e) {
+    debugPrint('Error during sign-in: $e');
+  }
 }
 
-Future<void> saveAuthID(String authID) async {
+Future<String> getAuthToken() async {
+  try {
+    var token = await getToken();
+    return token;
+  } catch (e) {
+    debugPrint('Error getting token: $e');
+    rethrow;
+  }
+}
+
+Future<void> saveUID(String authID) async {
   await storage.write(key: 'user_auth_id', value: authID);
 }
 
-Future<String?> getAuthID() async {
+Future<String?> getUID() async {
   var key = await storage.read(key: 'user_auth_id');
   if (key!.isNotEmpty) {
     return key;
@@ -40,61 +81,30 @@ Future<String?> getUserName() async {
   }
 }
 
-Future<bool?> authIDSwitch() async {
-  var sKey = await storage.read(key: 'user_auth_id');
-  if (sKey!.isNotEmpty) {
-    return true;
-  } else if (sKey.isEmpty) {
-    return false;
-  } else {
-    return null;
-  }
-}
-
-Future<void> saveIDToken(String? idToken) async {
-  await storage.write(key: 'id_token', value: idToken);
-}
-
-Future<void> deleteAccessToken() async {
-  await storage.delete(key: 'access_token');
-}
-
-Future<void> deleteIDToken() async {
-  await storage.delete(key: 'id_token');
-}
-
-Future<void> authUserDataHandler(BuildContext context) async {
-  final accessToken = await storage.read(key: 'access_token');
-  if (accessToken != null) {
-    final response = await dio.get(
-      'https://graph.microsoft.com/v1.0/me',
-      options: Options(headers: {
-        'Authorization': 'Bearer $accessToken',
-      }),
+Future<void> authUserDataHandler(String accessToken) async {
+  final response = await dio.get(
+    'https://graph.microsoft.com/v1.0/me',
+    options: Options(headers: {
+      'Authorization': 'Bearer $accessToken',
+    }),
+  );
+  if (response.statusCode == 200) {
+    // Handle the response
+    // debugPrint('-------------Response body: ${response.data}');
+    saveUID(response.data['id']);
+    saveUserName(response.data['givenName'] + response.data['surname']);
+    Database.storeAuthData(
+      id: response.data['id'],
+      displayName: response.data['displayName'],
+      fName: response.data['givenName'],
+      lName: response.data['surname'],
+      mail: response.data['mail'],
+      bPhone: response.data['businessPhones'][0],
     );
-
-    if (response.statusCode == 200) {
-      // Handle the response
-      // debugPrint('-------------Response body: ${response.data}');
-      saveAuthID(response.data['id']);
-      saveUserName(response.data['givenName'] + response.data['surname']);
-      Database.storeAuthData(
-        id: response.data['id'],
-        displayName: response.data['displayName'],
-        fName: response.data['givenName'],
-        lName: response.data['surname'],
-        mail: response.data['mail'],
-        bPhone: response.data['businessPhones'][0],
-      );
-      locator<RouterService>().navigateToDashboardView;
-    }
-    else {
-      // Handle the error
-      debugPrint('Request failed with status: ${response.statusCode}.');
-    }
-  }
-  else {
-    debugPrint('Access token not found.');
+    locator<RouterService>().navigateToDashboardView;
+  } else {
+    // Handle the error
+    debugPrint('Request failed with status: ${response.statusCode}.');
   }
 }
 

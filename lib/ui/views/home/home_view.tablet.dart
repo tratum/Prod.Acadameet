@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_web_layout/responsive_web_layout.dart';
 import 'package:stacked/stacked.dart';
 
-class HomeViewTablet extends ViewModelWidget<HomeViewModel>{
+class HomeViewTablet extends ViewModelWidget<HomeViewModel> {
   const HomeViewTablet({super.key});
 
   @override
@@ -11,10 +11,11 @@ class HomeViewTablet extends ViewModelWidget<HomeViewModel>{
     return Scaffold(
       body: SafeArea(
         child: ResponsiveWebLayout.buildTabletLayout(
-            context: context,
-            highResTabletLayout: const Placeholder(),
-            standardTabletLayout: const Placeholder(),
+          context: context,
+          highResTabletLayout: const Placeholder(),
+          standardTabletLayout: const Placeholder(),
         ),
       ),
     );
-  }}
+  }
+}

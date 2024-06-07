@@ -1,9 +1,7 @@
-import 'package:acadameet/commons/ui_helpers.dart';
-import 'package:acadameet/msal_interop.dart';
+import '../commons/ui_helpers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../config/microsoft_auth.dart';
-import '../config/microsoft_functions.dart';
+import '../config/microsoft/microsoft_functions.dart';
 import '../ui/meetings/create_meetings.dart';
 
 // Future<void> selectDate(BuildContext context, DateTime currDate) async {
@@ -226,23 +224,6 @@ import '../ui/meetings/create_meetings.dart';
 //   }
 // }
 
-Future<void> _signIn() async {
-  try {
-    await signIn();
-  } catch (e) {
-    print('Error during sign-in: $e');
-  }
-}
-
-Future<void> _getToken() async {
-  try {
-    var token = await getToken();
-    print('Access token: $token');
-  } catch (e) {
-    print('Error getting token: $e');
-  }
-}
-
 Widget floatingBottomNavBar(BuildContext context) {
   return Container(
     height: 70,
@@ -354,13 +335,13 @@ Widget addTask({
 Widget desktopDashboardView(BuildContext context) {
   return SafeArea(
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+    mainAxisSize: MainAxisSize.min,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
           Container(
             width: 280,
             height: MediaQuery.of(context).size.height,
@@ -480,247 +461,245 @@ Widget desktopDashboardView(BuildContext context) {
               ],
             ),
           ),
-
-              ],
-            ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        ],
+      ),
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30, left: 40),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: const Color(0XFFEDF0F5),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        width: 400,
-                        height: 40,
-                        padding: const EdgeInsets.only(left: 12, right: 12),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                            hintText: "Search",
-                            hintStyle: TextStyle(
-                              fontFamily: 'GlacialIndifference',
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0XFF6F6E7C),
-                            ),
-                            prefixIcon: Icon(Icons.search_rounded, size: 24, color: Color(0XFF6F6E7C)),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(top: 4,left: 8),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const Spacer(),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 30, left: 40),
-                      child: Icon(Icons.notifications,size: 28,color: Color(0XFF6C9191),),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 30, right: 40,left: 20),
-                      child: CircleAvatar(
-                        radius: 14,
-                        backgroundColor: Color(0XFF292929),
-                        backgroundImage: NetworkImage(
-                          scale: 1,
-                          "https://tratum.github.io/cloud-asset-storage/images/sample-profile-icon.webp",
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                verticalSpaceSemiMedium,
-                Row(
-                  children: [
-                    horizontalSpaceMedium,
-                    const Text(
-                      "Appointments",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'GlacialIndifference',
-                        color: Color(0XFF000000),
-                        fontSize: 32,
-                      ),
-                    ),
-                    const Spacer(),
-                    GestureDetector(
-                      onTap: () {
-                      },
-                      child: const Row(
-                        children: [
-                          Text(
-                            "Add",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'GlacialIndifference',
-                              color: Color(0XFF000000),
-                              fontSize: 24,
-                            ),
-                          ),
-                          horizontalSpaceSmall,
-                          Icon(Icons.add_box_outlined,size: 28,color: Color(0XFF0F1515),),
-                        ],
-                      ),
-                    ),
-                    horizontalSpaceMedium,
-                  ],
-                ),
-                verticalSpaceSemiSmall,
                 Padding(
-                  padding: const EdgeInsets.only(left: 25,right: 25),
+                  padding: const EdgeInsets.only(top: 30, left: 40),
                   child: Container(
-                    height: 2,
-                    width: MediaQuery.of(context).size.width - 300,
-                    color: const Color(0XFFE5E4E2),
+                    decoration: BoxDecoration(
+                      color: const Color(0XFFEDF0F5),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    width: 400,
+                    height: 40,
+                    padding: const EdgeInsets.only(left: 12, right: 12),
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        hintText: "Search",
+                        hintStyle: TextStyle(
+                          fontFamily: 'GlacialIndifference',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0XFF6F6E7C),
+                        ),
+                        prefixIcon: Icon(Icons.search_rounded,
+                            size: 24, color: Color(0XFF6F6E7C)),
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.only(top: 4, left: 8),
+                      ),
+                    ),
                   ),
                 ),
-                verticalSpaceSemiMedium,
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25),
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: const Color(0XFF000000),
-                                width: 1.4,
-                              ),
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(4),
-                              child: Icon(Icons.refresh_sharp,color: Color(0XFF111111),size: 24,),
-                            ),
-                          ),
-
-                        ],
-                      ),
+                const Spacer(),
+                const Padding(
+                  padding: EdgeInsets.only(top: 30, left: 40),
+                  child: Icon(
+                    Icons.notifications,
+                    size: 28,
+                    color: Color(0XFF6C9191),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 30, right: 40, left: 20),
+                  child: CircleAvatar(
+                    radius: 14,
+                    backgroundColor: Color(0XFF292929),
+                    backgroundImage: NetworkImage(
+                      scale: 1,
+                      "https://tratum.github.io/cloud-asset-storage/images/sample-profile-icon.webp",
                     ),
-                  ],
-                )
+                  ),
+                ),
               ],
             ),
-          ),
-        ],
-      ));
+            verticalSpaceSemiMedium,
+            Row(
+              children: [
+                horizontalSpaceMedium,
+                const Text(
+                  "Appointments",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'GlacialIndifference',
+                    color: Color(0XFF000000),
+                    fontSize: 32,
+                  ),
+                ),
+                const Spacer(),
+                GestureDetector(
+                  onTap: () {},
+                  child: const Row(
+                    children: [
+                      Text(
+                        "Add",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'GlacialIndifference',
+                          color: Color(0XFF000000),
+                          fontSize: 24,
+                        ),
+                      ),
+                      horizontalSpaceSmall,
+                      Icon(
+                        Icons.add_box_outlined,
+                        size: 28,
+                        color: Color(0XFF0F1515),
+                      ),
+                    ],
+                  ),
+                ),
+                horizontalSpaceMedium,
+              ],
+            ),
+            verticalSpaceSemiSmall,
+            Padding(
+              padding: const EdgeInsets.only(left: 25, right: 25),
+              child: Container(
+                height: 2,
+                width: MediaQuery.of(context).size.width - 300,
+                color: const Color(0XFFE5E4E2),
+              ),
+            ),
+            verticalSpaceSemiMedium,
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 25),
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: const Color(0XFF000000),
+                            width: 1.4,
+                          ),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(4),
+                          child: Icon(
+                            Icons.refresh_sharp,
+                            color: Color(0XFF111111),
+                            size: 24,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    ],
+  ));
 }
 
-Widget desktopHomeView(BuildContext context){
+Widget desktopHomeView(BuildContext context) {
   return Scaffold(
     backgroundColor: const Color(0XFF101010),
     body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(18),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  const Spacer(),
-                  Image.network(
-                    "https://tratum.github.io/cloud-asset-storage/images/acadameet/Acadameet-Logo-bgremove.webp",
-                    cacheWidth: 80,
-                    cacheHeight: 80,
-                    width: 80,
-                    height: 80,
-                    fit: BoxFit.cover,
-                  ),
-                  horizontalSpaceMedium,
-                  const Text(
-                    "Acadameet",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'GlacialIndifference',
-                      color: Color(0XFFFFFFFF),
-                      fontSize: 52,
-                    ),
-                  ),
-                  const Spacer(),
-                ],
-              ),
-              verticalSpaceMedium,
-              const Text(
-                  "Connecting Students and Faculty with Ease, One Click at a Time",
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'GlacialIndifference',
-                  color: Color(0XFFFFFFFF),
-                  fontSize: 32,
+      child: Padding(
+        padding: const EdgeInsets.all(18),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                const Spacer(),
+                Image.network(
+                  "https://tratum.github.io/cloud-asset-storage/images/acadameet/Acadameet-Logo-bgremove.webp",
+                  cacheWidth: 80,
+                  cacheHeight: 80,
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.cover,
                 ),
-              ),
-              verticalSpaceLarge,
-              Center(
-                child: Image.network(
-                  "https://tratum.github.io/cloud-asset-storage/images/acadameet/f-nobg.webp",
-                  width: MediaQuery.of(context).size.width / 0.75,
-                  height: MediaQuery.of(context).size.height / 2.2,
-                  fit: BoxFit.contain,
-                  alignment: Alignment.center,
-                ),
-              ),
-              verticalSpaceSemiMassive,
-              Row(
-                children: [
-                  const Spacer(),
-                  ElevatedButton(
-                    onPressed: () async {
-                      _signIn();
-                      _getToken();
-                      // final result = await MicrosoftAuth.oauth.login();
-                      // result.fold(
-                      //       (l) => debugPrint('--------------------Error: $l'),
-                      //       (r) {
-                      //     // String? accessToken = r.accessToken;
-                      //     // String? idToken = r.idToken;
-                      //     // String? refreshToken = r.refreshToken;
-                      //     // String? tokenType = r.tokenType;
-                      //     // int? expiresIn = r.expiresIn;
-                      //     // saveAccessToken(r.accessToken);
-                      //     // authUserDataHandler(context);
-                      //   },
-                      // );
-                    },
-                    style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
-                          const EdgeInsets.only(left: 12, right: 12)),
-                      shape: MaterialStateProperty.all(const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero)),
-                      backgroundColor:
-                      MaterialStateProperty.all(const Color(0XFFFFFFFF)),
-                    ),
-                    child: Row(
-                      children: [
-                        Image.network(
-                          "https://tratum.github.io/cloud-asset-storage/images/microsoft-logo.webp",
-                          height: 30,
-                          width: 30,
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        const Text("Sign-In With Microsoft",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 15,
-                                color: Color(0XFF5E5E5E))),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                      ],
-                    ),
+                horizontalSpaceMedium,
+                const Text(
+                  "Acadameet",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'GlacialIndifference',
+                    color: Color(0XFFFFFFFF),
+                    fontSize: 52,
                   ),
-                  const Spacer(),
-                ],
-              )
-            ],
-          ),
+                ),
+                const Spacer(),
+              ],
+            ),
+            verticalSpaceMedium,
+            const Text(
+              "Connecting Students and Faculty with Ease, One Click at a Time",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontFamily: 'GlacialIndifference',
+                color: Color(0XFFFFFFFF),
+                fontSize: 32,
+              ),
+            ),
+            verticalSpaceLarge,
+            Center(
+              child: Image.network(
+                "https://tratum.github.io/cloud-asset-storage/images/acadameet/f-nobg.webp",
+                width: MediaQuery.of(context).size.width / 0.75,
+                height: MediaQuery.of(context).size.height / 2.2,
+                fit: BoxFit.contain,
+                alignment: Alignment.center,
+              ),
+            ),
+            verticalSpaceSemiMassive,
+            Row(
+              children: [
+                const Spacer(),
+                ElevatedButton(
+                  onPressed: () async {
+                    microsoftSignIn();
+                    authUserDataHandler(await getAuthToken());
+                  },
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(
+                        const EdgeInsets.only(left: 12, right: 12)),
+                    shape: MaterialStateProperty.all(
+                        const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero)),
+                    backgroundColor:
+                        MaterialStateProperty.all(const Color(0XFFFFFFFF)),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.network(
+                        "https://tratum.github.io/cloud-asset-storage/images/microsoft-logo.webp",
+                        height: 30,
+                        width: 30,
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      const Text("Sign-In With Microsoft",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15,
+                              color: Color(0XFF5E5E5E))),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                    ],
+                  ),
+                ),
+                const Spacer(),
+              ],
+            )
+          ],
         ),
+      ),
     ),
   );
 }

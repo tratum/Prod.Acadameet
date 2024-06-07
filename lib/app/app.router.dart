@@ -8,8 +8,9 @@
 import 'package:flutter/material.dart' as _i6;
 import 'package:stacked/stacked.dart' as _i5;
 import 'package:stacked_services/stacked_services.dart' as _i4;
-import '../ui/views/home/home_view.dart' as _i7;
+
 import '../ui/views/dashboard/dashboard_view.dart' as _i2;
+import '../ui/views/home/home_view.dart' as _i7;
 import '../ui/views/startup/startup_view.dart' as _i1;
 import '../ui/views/unknown/unknown_view.dart' as _i3;
 
@@ -62,10 +63,7 @@ class StackedRouterWeb extends _i5.RootStackRouter {
           StartupViewRoute.name,
           path: '/',
         ),
-        _i5.RouteConfig(
-          HomeViewRoute.name,
-          path: '/'
-        ),
+        _i5.RouteConfig(HomeViewRoute.name, path: '/'),
         _i5.RouteConfig(
           DashboardViewRoute.name,
           path: '/dashboard',
@@ -107,12 +105,8 @@ class DashboardViewRoute extends _i5.PageRouteInfo<void> {
   static const String name = 'DashboardView';
 }
 
-class HomeViewRoute extends _i5.PageRouteInfo<void>{
-  const HomeViewRoute()
-  : super(
-      HomeViewRoute.name,
-      path: '/'
-  );
+class HomeViewRoute extends _i5.PageRouteInfo<void> {
+  const HomeViewRoute() : super(HomeViewRoute.name, path: '/');
 
   static const String name = 'HomeView';
 }
@@ -130,7 +124,6 @@ class UnknownViewRoute extends _i5.PageRouteInfo<void> {
 }
 
 extension RouterStateExtension on _i4.RouterService {
-
   Future<dynamic> navigateToStartupView(
       {void Function(_i5.NavigationFailure)? onFailure}) async {
     return navigateTo(
