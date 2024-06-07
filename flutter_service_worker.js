@@ -14,7 +14,7 @@ const RESOURCES = {"canvaskit/skwasm.js": "445e9e400085faead4493be2224d95aa",
 "canvaskit/chromium/canvaskit.js.symbols": "4525682ef039faeb11f24f37436dca06",
 "canvaskit/canvaskit.js.symbols": "38cba9233b92472a36ff011dc21c2c9f",
 "flutter.js": "c71a09214cb6f5f8996a531350400a9a",
-"main.dart.js": "6f34d676733660324266a7b5403a72fa",
+"main.dart.js": "6472637bbcb964dc2b3c3373a9b54fb1",
 "version.json": "f3c5b0966b83a1e5db539ba4da355612",
 "assets/assets/fonts/GlacialIndifference/GlacialIndifference-Regular.otf": "008080d5594fd00507fc8a2c93443d39",
 "assets/assets/fonts/GlacialIndifference/GlacialIndifference-Bold.otf": "070a9269082474ecd06b6d64ebd0fa2f",
@@ -32,9 +32,9 @@ const RESOURCES = {"canvaskit/skwasm.js": "445e9e400085faead4493be2224d95aa",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"index.html": "9ba564e8664d13c6cbdea8669c65d4ef",
-"/": "9ba564e8664d13c6cbdea8669c65d4ef",
-"msal_config.js": "45e59658d7eecae92413a7580accba03"};
+"index.html": "e65ac6167df95c0d3290c56b57bda472",
+"/": "e65ac6167df95c0d3290c56b57bda472",
+"msal_config.js": "0e11c01ea718e0d4a1eacbff800901c2"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
