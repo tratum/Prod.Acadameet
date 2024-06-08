@@ -3,7 +3,7 @@ const msalConfig = {
   auth: {
     clientId: "16d5719f-86d1-47a2-848d-e9f63d07a968",
     authority: "https://login.microsoftonline.com/organizations",
-    redirectUri: "https://tratum.github.io/Acadameet/",
+    redirectUri: "msal16d5719f-86d1-47a2-848d-e9f63d07a968://auth",
   },
   cache: {
     cacheLocation: "localStorage",
