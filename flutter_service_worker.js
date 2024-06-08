@@ -32,9 +32,9 @@ const RESOURCES = {"canvaskit/skwasm.js": "445e9e400085faead4493be2224d95aa",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"index.html": "40bca6a22abeebcef212e8641baf15d7",
-"/": "40bca6a22abeebcef212e8641baf15d7",
-"msal_config.js": "78d5065c7bddf2df0e3174ae44a3ff25"};
+"index.html": "3de46b37920c04e6aa0ed6d36606fa2c",
+"/": "3de46b37920c04e6aa0ed6d36606fa2c",
+"msal_config.js": "278628eec3248837c114ea2bad8e1c8b"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
