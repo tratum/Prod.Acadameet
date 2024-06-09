@@ -1,6 +1,7 @@
 import '../commons/ui_helpers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../config/microsoft/microsoft_auth.dart';
 import '../config/microsoft/microsoft_functions.dart';
 import '../ui/meetings/create_meetings.dart';
 
@@ -661,8 +662,22 @@ Widget desktopHomeView(BuildContext context) {
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () async {
-                    microsoftSignIn();
-                    authUserDataHandler(await getAuthToken());
+                    final result = await MicrosoftAuth.oauth.login();
+                    result.fold(
+                          (l) => debugPrint('--------------------Error: $l'),
+                          (r) {
+                        // String? accessToken = r.accessToken;
+                        // String? idToken = r.idToken;
+                        // String? refreshToken = r.refreshToken;
+                        // String? tokenType = r.tokenType;
+                        // int? expiresIn = r.expiresIn;
+                        saveAccessToken(r.accessToken);
+                        authUserDataHandler();
+                      },
+                    );
+                    // microsoftSignIn();
+                    // String token = await getAuthToken();
+                    // authUserDataHandler(token);
                   },
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(

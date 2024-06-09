@@ -10,9 +10,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 const storage = FlutterSecureStorage();
 final dio = Dio();
 
-// Future<void> saveAccessToken(String? accessToken) async {
-//   await storage.write(key: 'access_token', value: accessToken);
-// }
+Future<void> saveAccessToken(String? accessToken) async {
+  await storage.write(key: 'access_token', value: accessToken);
+}
 //
 // Future<bool?> authIDSwitch() async {
 //   var sKey = await storage.read(key: 'user_auth_id');
@@ -81,7 +81,8 @@ Future<String?> getUserName() async {
   }
 }
 
-Future<void> authUserDataHandler(String accessToken) async {
+Future<void> authUserDataHandler() async {
+  final accessToken = await storage.read(key: 'access_token');
   final response = await dio.get(
     'https://graph.microsoft.com/v1.0/me',
     options: Options(headers: {
@@ -104,7 +105,7 @@ Future<void> authUserDataHandler(String accessToken) async {
     locator<RouterService>().navigateToDashboardView;
   } else {
     // Handle the error
-    debugPrint('Request failed with status: ${response.statusCode}.');
+    debugPrint('Request failed with status: ${response.statusCode}, ${response.statusMessage} and ${response.headers}.');
   }
 }
 

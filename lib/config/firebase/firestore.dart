@@ -52,7 +52,7 @@ class Database {
         "schedulingDate": scheduleDate,
         "schedulingTime": scheduleTime,
         "TimeStamp": Timestamp.now(),
-        "secretKey": "Xgyc0Ses01KGS06GhTHO1njNmB3i9SMcWPTjkoUKgtvPWWtiY7",
+        "secretKey": firebaseSecretKey,
       };
       final FirebaseFirestore store = FirebaseFirestore.instance;
       final DocumentReference docRef =

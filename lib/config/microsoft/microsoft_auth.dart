@@ -1,7 +1,6 @@
 import 'package:aad_oauth/aad_oauth.dart';
 import 'package:aad_oauth/model/config.dart';
 import 'package:flutter/material.dart';
-
 import '../../main.dart';
 import '../keys/keys.dart';
 
@@ -12,7 +11,8 @@ class MicrosoftAuth {
     scope: scope,
     navigatorKey: navigatorKey,
     loader: const SizedBox(),
-    responseType: responseType,
+    webUseRedirect: true,
+    // responseType: responseType,
     // appBar: AppBar(
     //   title: const Text(''),
     // ),
