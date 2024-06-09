@@ -1,16 +1,56 @@
-# acadameet_web
+# Acadameet
+![GitHub license](https://img.shields.io/badge/license-Apache_2.0-blue.svg)
+<br>
 
-A new Flutter project.
+A Web App that books appointments physical or video meeting between students and and their college faculty.
 
-## Getting Started
+## Installation
+1. Clone the repository
+   ```bash
+   git clone https://github.com/tratum/Acadameet.git
+   ```
+2. Navigate to the project directory
+   ```bash
+   cd Acadameet
+   ```
+3. Install Dependencies
+   ```bash
+   flutter pub get 
+   ```
+4. Run the WebApp
+   ```bash
+   flutter run -d chrome/edge
+   ```
+5. To Rebuild the WebApp
+   ```
+   flutter build web --web-renderer auto --profile
+   ``` 
+   <br>
 
-This project is a starting point for a Flutter application.
+## Configuration
+1. Create `keys.dart` file in lib/config/
+   <br>
 
-A few resources to get you started if this is your first Flutter project:
+   ```bash
+   cd lib/config
+   touch keys.dart    
+   ```
+2. Populate `keys.dart`
+   <br>
+    
+   ```
+   const String tenant = "organizations";
+   const String redirectUrl = "REDIRECT_URI";
+   const String scope = "SCOPES";
+   const String clientID = "CLIENT_ID";
+   const String firebaseSecretKey = "SECRET_KEY";
+   ```    
+<br>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Contribution
+Contributions are welcome! Please open an issue or submit a pull request for any changes or improvements.
+<br>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## License
+This project is licensed under the Apache-2.0 license. See the [LICENSE](LICENSE) file for details
+<br>
