@@ -12,6 +12,7 @@ class MicrosoftAuth {
     navigatorKey: navigatorKey,
     loader: const SizedBox(),
     webUseRedirect: true,
+    redirectUri: redirectUrl,
     // responseType: responseType,
     // appBar: AppBar(
     //   title: const Text(''),
