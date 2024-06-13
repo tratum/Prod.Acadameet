@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html>
 <head>
     <!--
       If you are serving your web app in a path other than the root, change the
@@ -14,6 +14,7 @@
       This is a placeholder for base href that will be replaced by the value of
       the `--base-href` argument provided to `flutter build`.
     -->
+    <base href="/">
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -26,20 +27,22 @@
     <link href="icons/Icon-192.png" rel="apple-touch-icon">
 
     <!-- Favicon -->
-    <link href="favicon.png" rel="icon" type="image/png">
+    <link href="favicon.png" rel="icon" type="image/png"/>
 
     <title>Acadameet</title>
     <link href="manifest.json" rel="manifest">
 
-    <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.13.1/js/msal-browser.min.js"></script>
+    <script src="https://alcdn.msauth.net/browser/2.13.1/js/msal-browser.min.js"
+            type="text/javascript"></script>
     <script src="assets/packages/aad_oauth/assets/msalv2.js"></script>
 
-<!--    <script src="https://alcdn.msauth.net/browser/2.19.0/js/msal-browser.min.js"></script>-->
-<!--    <script src="msal_config.js"></script>-->
+    <!--    <script src="https://alcdn.msauth.net/browser/2.19.0/js/msal-browser.min.js"></script>-->
+    <!--    <script src="msal_config.js"></script>-->
 
     <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "2079319092";
+    const serviceWorkerVersion = "469361868";
+
 
 
 
@@ -62,6 +65,7 @@
         }
       });
     });
+
 
 
 

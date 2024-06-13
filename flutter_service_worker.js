@@ -32,8 +32,8 @@ const RESOURCES = {"canvaskit/skwasm.js": "445e9e400085faead4493be2224d95aa",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"index.html": "05f3a3962f33dec21b57d182cf4c52e6",
-"/": "05f3a3962f33dec21b57d182cf4c52e6",
+"index.html": "48904736745195fd60f811e62159235e",
+"/": "48904736745195fd60f811e62159235e",
 "msal_config.js": "278628eec3248837c114ea2bad8e1c8b"};
 // The application shell files that are downloaded before a service worker can
 // start.
