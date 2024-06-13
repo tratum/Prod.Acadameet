@@ -1,6 +1,7 @@
-import '../commons/ui_helpers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../commons/ui_helpers.dart';
 import '../config/microsoft/microsoft_auth.dart';
 import '../config/microsoft/microsoft_functions.dart';
 import '../ui/meetings/create_meetings.dart';
@@ -664,8 +665,8 @@ Widget desktopHomeView(BuildContext context) {
                   onPressed: () async {
                     final result = await MicrosoftAuth.oauth.login();
                     result.fold(
-                          (l) => debugPrint('--------------------Error: $l'),
-                          (r) {
+                      (l) => debugPrint('--------------------Error: $l'),
+                      (r) {
                         // String? accessToken = r.accessToken;
                         // String? idToken = r.idToken;
                         // String? refreshToken = r.refreshToken;

@@ -1,10 +1,13 @@
 # Acadameet
+
 ![GitHub license](https://img.shields.io/badge/license-Apache_2.0-blue.svg)
 <br>
 
-A Web App that books appointments physical or video meeting between students and and their college faculty.
+A Web App that books appointments physical or video meeting between students and and their college
+faculty.
 
 ## Installation
+
 1. Clone the repository
    ```bash
    git clone https://github.com/tratum/Acadameet.git
@@ -28,6 +31,7 @@ A Web App that books appointments physical or video meeting between students and
    <br>
 
 ## Configuration
+
 1. Create `keys.dart` file in lib/config/
    <br>
 
@@ -37,7 +41,7 @@ A Web App that books appointments physical or video meeting between students and
    ```
 2. Populate `keys.dart`
    <br>
-    
+
    ```
    const String tenant = "organizations";
    const String redirectUrl = "REDIRECT_URI";
@@ -45,12 +49,16 @@ A Web App that books appointments physical or video meeting between students and
    const String clientID = "CLIENT_ID";
    const String firebaseSecretKey = "SECRET_KEY";
    ```    
+
 <br>
 
 ## Contribution
-Contributions are welcome! Please open an issue or submit a pull request for any changes or improvements.
+
+Contributions are welcome! Please open an issue or submit a pull request for any changes or
+improvements.
 <br>
 
 ## License
+
 This project is licensed under the Apache-2.0 license. See the [LICENSE](LICENSE) file for details
 <br>

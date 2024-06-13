@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
-import 'msal_interop.dart';
-import '../../app/app.router.dart';
-import '../../app/app.locator.dart';
 import 'package:flutter/material.dart';
-import '../../../config/firebase/firestore.dart';
-import 'package:stacked_services/stacked_services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:stacked_services/stacked_services.dart';
+
+import '../../../config/firebase/firestore.dart';
+import '../../app/app.locator.dart';
+import '../../app/app.router.dart';
+import 'msal_interop.dart';
 
 const storage = FlutterSecureStorage();
 final dio = Dio();
@@ -105,7 +106,8 @@ Future<void> authUserDataHandler() async {
     locator<RouterService>().navigateToDashboardView;
   } else {
     // Handle the error
-    debugPrint('Request failed with status: ${response.statusCode}, ${response.statusMessage} and ${response.headers}.');
+    debugPrint(
+        'Request failed with status: ${response.statusCode}, ${response.statusMessage} and ${response.headers}.');
   }
 }
 

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_web_layout/responsive_web_layout.dart';
 import 'package:stacked/stacked.dart';
-import '../../views/home/home_view_model.dart';
+
 import '../../../commons/common_widgets.dart';
+import '../../views/home/home_view_model.dart';
 
 class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
   const HomeViewDesktop({super.key});
