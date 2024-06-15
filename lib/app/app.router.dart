@@ -10,7 +10,7 @@ import 'package:stacked/stacked.dart' as _i5;
 import 'package:stacked_services/stacked_services.dart' as _i4;
 
 import '../ui/views/dashboard/dashboard_view.dart' as _i2;
-import '../ui/views/home/home_view.dart' as _i7;
+import '../ui/views/login/login_view.dart' as _i7;
 import '../ui/views/startup/startup_view.dart' as _i1;
 import '../ui/views/unknown/unknown_view.dart' as _i3;
 
@@ -31,10 +31,10 @@ class StackedRouterWeb extends _i5.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    HomeViewRoute.name: (routeData) {
+    LoginViewRoute.name: (routeData) {
       return _i5.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i7.HomeView(),
+        child: const _i7.LoginView(),
         opaque: true,
         barrierDismissible: false,
       );
@@ -63,7 +63,10 @@ class StackedRouterWeb extends _i5.RootStackRouter {
           StartupViewRoute.name,
           path: '/',
         ),
-        _i5.RouteConfig(HomeViewRoute.name, path: '/'),
+        _i5.RouteConfig(
+            LoginViewRoute.name,
+            path: '/login',
+        ),
         _i5.RouteConfig(
           DashboardViewRoute.name,
           path: '/dashboard',
@@ -105,10 +108,13 @@ class DashboardViewRoute extends _i5.PageRouteInfo<void> {
   static const String name = 'DashboardView';
 }
 
-class HomeViewRoute extends _i5.PageRouteInfo<void> {
-  const HomeViewRoute() : super(HomeViewRoute.name, path: '/');
+class LoginViewRoute extends _i5.PageRouteInfo<void> {
+  const LoginViewRoute() : super(
+      LoginViewRoute.name,
+      path: '/login',
+  );
 
-  static const String name = 'HomeView';
+  static const String name = 'LoginView';
 }
 
 /// generated route for
@@ -132,10 +138,10 @@ extension RouterStateExtension on _i4.RouterService {
     );
   }
 
-  Future<dynamic> navigateToHomeView(
+  Future<dynamic> navigateToLoginView(
       {void Function(_i5.NavigationFailure)? onFailure}) async {
     return navigateTo(
-      const HomeViewRoute(),
+      const LoginViewRoute(),
       onFailure: onFailure,
     );
   }
@@ -164,10 +170,10 @@ extension RouterStateExtension on _i4.RouterService {
     );
   }
 
-  Future<dynamic> replaceWithHomeView(
+  Future<dynamic> replaceWithLoginView(
       {void Function(_i5.NavigationFailure)? onFailure}) async {
     return replaceWith(
-      const HomeViewRoute(),
+      const LoginViewRoute(),
       onFailure: onFailure,
     );
   }

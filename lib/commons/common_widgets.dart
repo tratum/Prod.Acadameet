@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../commons/ui_helpers.dart';
 import '../config/microsoft/microsoft_auth.dart';
 import '../config/microsoft/microsoft_functions.dart';
@@ -605,7 +604,7 @@ Widget desktopDashboardView(BuildContext context) {
   ));
 }
 
-Widget desktopHomeView(BuildContext context) {
+Widget desktopLoginView(BuildContext context) {
   return Scaffold(
     backgroundColor: const Color(0XFF101010),
     body: SafeArea(
@@ -682,37 +681,82 @@ Widget desktopHomeView(BuildContext context) {
                   },
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(
-                        const EdgeInsets.only(left: 12, right: 12)),
+                        const EdgeInsets.only(left: 12)),
                     shape: MaterialStateProperty.all(
                         const RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero)),
                     backgroundColor:
                         MaterialStateProperty.all(const Color(0XFFFFFFFF)),
                   ),
-                  child: Row(
-                    children: [
-                      Image.network(
-                        "https://tratum.github.io/cloud-asset-storage/images/microsoft-logo.webp",
-                        height: 30,
-                        width: 30,
+                  child: SizedBox(
+                    width: 205,
+                    height: 40,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 4, bottom: 4),
+                      child: Row(
+                        children: [
+                          Image.network(
+                            "https://tratum.github.io/cloud-asset-storage/images/microsoft-logo.webp",
+                            height: 30,
+                            width: 30,
+                          ),
+                          Spacer(),
+                          const Text("Sign in with Microsoft",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15,
+                                  color: Color(0XFF5E5E5E))),
+                          Spacer(),
+                        ],
                       ),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                      const Text("Sign-In With Microsoft",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15,
-                              color: Color(0XFF5E5E5E))),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
                 const Spacer(),
               ],
-            )
+            ),
+            verticalSpaceLarge,
+            Row(
+              children: [
+                const Spacer(),
+                ElevatedButton(
+                  onPressed: () async {},
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(
+                        const EdgeInsets.only(left: 12)),
+                    shape: MaterialStateProperty.all(
+                        const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero)),
+                    backgroundColor:
+                        MaterialStateProperty.all(const Color(0XFFFFFFFF)),
+                  ),
+                  child: SizedBox(
+                    width: 205,
+                    height: 40,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 4, bottom: 4),
+                      child: Row(
+                        children: [
+                          Image.network(
+                            "https://tratum.github.io/cloud-asset-storage/images/google.webp",
+                            height: 25,
+                            width: 25,
+                          ),
+                          Spacer(),
+                          const Text("Sign in with Google",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15,
+                                  color: Color(0XFF5E5E5E))),
+                          Spacer(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const Spacer(),
+              ],
+            ),
           ],
         ),
       ),

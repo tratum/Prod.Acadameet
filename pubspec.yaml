@@ -20,6 +20,7 @@ dependencies:
   aad_oauth:
   url_strategy:
   firebase_core:
+  google_sign_in:
   stacked_shared:
   buttons_tabbar:
   cloud_firestore:

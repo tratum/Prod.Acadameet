@@ -1,8 +1,7 @@
-import 'package:acadameet/ui/views/home/home_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../ui/views/dashboard/dashboard_view.dart';
+import '../ui/views/login/login_view.dart';
 import '../ui/views/startup/startup_view.dart';
 import '../ui/views/unknown/unknown_view.dart';
 // @stacked-import
@@ -12,7 +11,7 @@ import '../ui/views/unknown/unknown_view.dart';
     CustomRoute(
       page: StartupView,
     ),
-    CustomRoute(page: HomeView, path: '/', initial: true),
+    CustomRoute(page: LoginView, path: '/login', initial: true),
     CustomRoute(page: DashboardView, path: '/dashboard', deferredLoading: true),
     // @stacked-route
 
