@@ -1,17 +1,17 @@
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
-import '../ui/views/dashboard/dashboard_view.dart';
-import '../ui/views/login/login_view.dart';
-import '../ui/views/startup/startup_view.dart';
-import '../ui/views/unknown/unknown_view.dart';
+
+import '../views/dashboard/dashboard_view.dart';
+import '../views/login/login_view.dart';
+import '../views/startup/startup_view.dart';
+import '../views/unknown/unknown_view.dart';
+
 // @stacked-import
 
 @StackedApp(
   routes: [
-    CustomRoute(
-      page: StartupView,
-    ),
-    CustomRoute(page: LoginView, path: '/login', initial: true),
+    CustomRoute(page: StartupView),
+    CustomRoute(page: LoginView, path: '/',initial: true),
     CustomRoute(page: DashboardView, path: '/dashboard', deferredLoading: true),
     // @stacked-route
 

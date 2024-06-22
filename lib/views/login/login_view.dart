@@ -1,10 +1,11 @@
-import '../..//views/login/login_view.desktop.dart';
-import '../../views/login/login_view.mobile.dart';
-import '../../views/login/login_view.tablet.dart';
-import '../../views/login/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stacked/stacked.dart';
+
+import 'login_view.desktop.dart';
+import 'login_view.mobile.dart';
+import 'login_view.tablet.dart';
+import 'login_view_model.dart';
 
 class LoginView extends StackedView<LoginViewModel> {
   const LoginView({super.key});

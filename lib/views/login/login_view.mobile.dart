@@ -1,7 +1,8 @@
-import 'package:acadameet/ui/views/login/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_web_layout/responsive_web_layout.dart';
 import 'package:stacked/stacked.dart';
+
+import 'login_view_model.dart';
 
 class LoginViewMobile extends ViewModelWidget<LoginViewModel> {
   const LoginViewMobile({super.key});

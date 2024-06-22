@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../commons/ui_helpers.dart';
 import '../config/microsoft/microsoft_auth.dart';
 import '../config/microsoft/microsoft_functions.dart';
-import '../ui/meetings/create_meetings.dart';
 
 // Future<void> selectDate(BuildContext context, DateTime currDate) async {
 //   final DateTime? picked = await showDatePicker(
@@ -225,72 +224,72 @@ import '../ui/meetings/create_meetings.dart';
 //   }
 // }
 
-Widget floatingBottomNavBar(BuildContext context) {
-  return Container(
-    height: 70,
-    width: 250,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(50),
-      color: const Color(0XFF313131),
-    ),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        GestureDetector(
-          onTap: () {},
-          child: const CircleAvatar(
-            radius: 36,
-            backgroundColor: Color(0XFFB31B1B),
-            child: Center(
-              child: Icon(
-                Icons.edit,
-                size: 18,
-                color: Color(0XFFFFFFFF),
-              ),
-            ),
-          ),
-        ),
-        const Spacer(),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => const CreateMeetings(),
-                ));
-          },
-          child: const CircleAvatar(
-            radius: 36,
-            backgroundColor: Color(0XFFB31B1B),
-            child: Center(
-              child: Icon(
-                Icons.add,
-                size: 26,
-                color: Color(0XFFFFFFFF),
-              ),
-            ),
-          ),
-        ),
-        const Spacer(),
-        GestureDetector(
-          onTap: () {},
-          child: const CircleAvatar(
-            radius: 36,
-            backgroundColor: Color(0XFFB31B1B),
-            child: Center(
-              child: Icon(
-                Icons.settings,
-                size: 22,
-                color: Color(0XFFFFFFFF),
-              ),
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
+// Widget floatingBottomNavBar(BuildContext context) {
+//   return Container(
+//     height: 70,
+//     width: 250,
+//     decoration: BoxDecoration(
+//       borderRadius: BorderRadius.circular(50),
+//       color: const Color(0XFF313131),
+//     ),
+//     child: Row(
+//       crossAxisAlignment: CrossAxisAlignment.center,
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         GestureDetector(
+//           onTap: () {},
+//           child: const CircleAvatar(
+//             radius: 36,
+//             backgroundColor: Color(0XFFB31B1B),
+//             child: Center(
+//               child: Icon(
+//                 Icons.edit,
+//                 size: 18,
+//                 color: Color(0XFFFFFFFF),
+//               ),
+//             ),
+//           ),
+//         ),
+//         const Spacer(),
+//         GestureDetector(
+//           onTap: () {
+//             Navigator.push(
+//                 context,
+//                 CupertinoPageRoute(
+//                   builder: (context) => const CreateMeetings(),
+//                 ));
+//           },
+//           child: const CircleAvatar(
+//             radius: 36,
+//             backgroundColor: Color(0XFFB31B1B),
+//             child: Center(
+//               child: Icon(
+//                 Icons.add,
+//                 size: 26,
+//                 color: Color(0XFFFFFFFF),
+//               ),
+//             ),
+//           ),
+//         ),
+//         const Spacer(),
+//         GestureDetector(
+//           onTap: () {},
+//           child: const CircleAvatar(
+//             radius: 36,
+//             backgroundColor: Color(0XFFB31B1B),
+//             child: Center(
+//               child: Icon(
+//                 Icons.settings,
+//                 size: 22,
+//                 color: Color(0XFFFFFFFF),
+//               ),
+//             ),
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// }
 
 Widget addTask({
   required final double width,
