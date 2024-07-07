@@ -1,6 +1,6 @@
 {
-  "name": "acadameet_web",
-  "short_name": "acadameet_web",
+  "name": "acadameet",
+  "short_name": "acadameet",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0175C2",
