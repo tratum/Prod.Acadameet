@@ -21,6 +21,7 @@ dependencies:
   url_strategy:
   firebase_core:
   google_sign_in:
+  google_sign_in_web:
   stacked_shared:
   cloud_firestore:
   stacked_services:

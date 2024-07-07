@@ -1,3 +1,6 @@
+import 'package:acadameet/config/google/google_functions.dart';
+import 'package:acadameet/config/google/sign_in_button/google_sign_in_button.dart';
+import 'package:acadameet/views/login/login_view_model.dart';
 import 'package:flutter/material.dart';
 
 import '../commons/ui_helpers.dart';
@@ -719,7 +722,10 @@ Widget desktopLoginView(BuildContext context) {
               children: [
                 const Spacer(),
                 ElevatedButton(
-                  onPressed: () async {},
+                  onPressed: () {
+                    handleGoogleSignIn();
+                    // googleAuthHandler(LoginViewModel().currentUser);
+                  },
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(
                         const EdgeInsets.only(left: 12)),
@@ -727,7 +733,7 @@ Widget desktopLoginView(BuildContext context) {
                         const RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero)),
                     backgroundColor:
-                        MaterialStateProperty.all(const Color(0XFFFFFFFF)),
+                    MaterialStateProperty.all(const Color(0XFFFFFFFF)),
                   ),
                   child: SizedBox(
                     width: 205,
