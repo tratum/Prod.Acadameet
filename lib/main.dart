@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -6,6 +7,7 @@ import 'app/app.bottomsheets.dart';
 import 'app/app.dialogs.dart';
 import 'app/app.locator.dart';
 import 'app/app.router.dart';
+import 'firebase_options.dart';
 
 void main() {
   setPathUrlStrategy();
@@ -13,9 +15,9 @@ void main() {
   setupDialogUi();
   setupBottomSheetUi();
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const Main());
 }
 

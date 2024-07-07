@@ -11,7 +11,7 @@ import '../views/unknown/unknown_view.dart';
 @StackedApp(
   routes: [
     CustomRoute(page: StartupView),
-    CustomRoute(page: LoginView, path: '/',initial: true),
+    CustomRoute(page: LoginView, path: '/', initial: true),
     CustomRoute(page: DashboardView, path: '/dashboard', deferredLoading: true),
     // @stacked-route
 

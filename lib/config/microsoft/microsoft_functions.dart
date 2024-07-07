@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -14,6 +16,7 @@ final dio = Dio();
 Future<void> saveAccessToken(String? accessToken) async {
   await storage.write(key: 'access_token', value: accessToken);
 }
+
 //
 // Future<bool?> authIDSwitch() async {
 //   var sKey = await storage.read(key: 'user_auth_id');
@@ -42,7 +45,7 @@ Future<void> microsoftSignIn() async {
   try {
     await signIn();
   } catch (e) {
-    debugPrint('Error during sign-in: $e');
+    log('Error during sign-in: $e');
   }
 }
 
@@ -51,7 +54,7 @@ Future<String> getAuthToken() async {
     var token = await getToken();
     return token;
   } catch (e) {
-    debugPrint('Error getting token: $e');
+    log('Error getting token: $e');
     rethrow;
   }
 }
@@ -105,19 +108,17 @@ Future<void> authUserDataHandler() async {
     );
     locator<RouterService>().navigateToDashboardView;
   } else {
-    // Handle the error
-    debugPrint(
-        'Request failed with status: ${response.statusCode}, ${response.statusMessage} and ${response.headers}.');
+    log('Request failed with status: ${response.statusCode}, ${response.statusMessage} and ${response.headers}.');
   }
 }
 
 Future<void> createMail(String recipientMail) async {
   final accessToken = await storage.read(key: 'access_token');
   if (accessToken == null || accessToken.isEmpty) {
-    debugPrint("Access token is null or empty.");
+    log("Access token is null or empty.");
     return;
   }
-  const String url = 'https://graph.microsoft.com/v1.0/me/sendMail';
+  const String requestUrl = 'https://graph.microsoft.com/v1.0/me/sendMail';
   String emailBody = '''
      {
     "message": {
@@ -140,7 +141,7 @@ Future<void> createMail(String recipientMail) async {
 
   try {
     final response = await Dio().post(
-      url,
+      requestUrl,
       options: Options(
         headers: {
           'Authorization': 'Bearer $accessToken',
@@ -151,13 +152,12 @@ Future<void> createMail(String recipientMail) async {
     );
 
     if (response.statusCode == 202) {
-      debugPrint("------------------------Mail Sent Successfully");
+      log("------------------------Mail Sent Successfully");
     } else {
-      debugPrint(
-          "------------------------Mail Request Failed ${response.statusMessage}");
+      log("------------------------Mail Request Failed ${response.statusMessage}");
     }
   } catch (e) {
-    debugPrint("------------------------Error sending mail: $e");
+    log("------------------------Error sending mail: $e");
   }
 }
 
@@ -192,7 +192,7 @@ Future<void> createEvent(String recipientMail) async {
  }
   ''';
   if (accessToken == null || accessToken.isEmpty) {
-    debugPrint("Access token is null or empty.");
+    log("Access token is null or empty.");
     return;
   }
   const String url = 'https://graph.microsoft.com/v1.0/me/events';
@@ -206,12 +206,12 @@ Future<void> createEvent(String recipientMail) async {
         ),
         data: eventBody);
     if (response.statusCode == 201) {
-      debugPrint("------------------------Event Created Successfully");
+      log("------------------------Event Created Successfully");
     } else {
       debugPrint(
           "------------------------Mail Request Failed ${response.statusMessage}");
     }
   } catch (e) {
-    debugPrint("------------------------Error Creating Event: $e");
+    log("------------------------Error Creating Event: $e");
   }
 }

@@ -101,9 +101,9 @@ class StartupViewRoute extends _i5.PageRouteInfo<void> {
 class LoginViewRoute extends _i5.PageRouteInfo<void> {
   const LoginViewRoute()
       : super(
-    LoginViewRoute.name,
-    path: '/',
-  );
+          LoginViewRoute.name,
+          path: '/',
+        );
 
   static const String name = 'LoginView';
 }

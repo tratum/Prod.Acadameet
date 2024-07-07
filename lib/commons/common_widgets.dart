@@ -1,7 +1,13 @@
+import 'dart:developer';
+
+import 'package:acadameet/app/app.locator.dart';
+import 'package:acadameet/app/app.router.dart';
+import 'package:acadameet/config/google/google_auth_handler.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 import '../commons/ui_helpers.dart';
-import '../config/microsoft/microsoft_auth.dart';
+import '../config/microsoft/microsoft_auth_handler.dart';
 import '../config/microsoft/microsoft_functions.dart';
 
 // Future<void> selectDate(BuildContext context, DateTime currDate) async {
@@ -660,23 +666,38 @@ Widget desktopLoginView(BuildContext context) {
               children: [
                 const Spacer(),
                 ElevatedButton(
+                  // onPressed: () async {
+                  //   final result = await MicrosoftAuthHandler.oauth.login();
+                  //   result.fold(
+                  //     (l) => log('--------------------Error: $l'),
+                  //     (r) {
+                  //       // String? accessToken = r.accessToken;
+                  //       // String? idToken = r.idToken;
+                  //       // String? refreshToken = r.refreshToken;
+                  //       // String? tokenType = r.tokenType;
+                  //       // int? expiresIn = r.expiresIn;
+                  //       saveAccessToken(r.accessToken);
+                  //       authUserDataHandler();
+                  //     },
+                  //   );
+                  // },
                   onPressed: () async {
-                    final result = await MicrosoftAuth.oauth.login();
-                    result.fold(
-                      (l) => debugPrint('--------------------Error: $l'),
-                      (r) {
-                        // String? accessToken = r.accessToken;
-                        // String? idToken = r.idToken;
-                        // String? refreshToken = r.refreshToken;
-                        // String? tokenType = r.tokenType;
-                        // int? expiresIn = r.expiresIn;
-                        saveAccessToken(r.accessToken);
-                        authUserDataHandler();
-                      },
-                    );
-                    // microsoftSignIn();
-                    // String token = await getAuthToken();
-                    // authUserDataHandler(token);
+                    try {
+                      await MicrosoftAuthHandler.handleSignIn();
+                    } catch (e) {
+                      debugPrint("Error during Microsoft sign-in: $e");
+                    }
+                    // try {
+                    //   await MicrosoftAuthHandler.handleSignIn().then((value) {
+                    //     if (value != null) {
+                    //       locator<RouterService>().replaceWithDashboardView();
+                    //     } else {
+                    //       throw Exception("User canceled the sign-in process.");
+                    //     }
+                    //   });
+                    // } catch (e) {
+                    //   log("Error during Microsoft sign-in: $e");
+                    // }
                   },
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(
@@ -699,13 +720,13 @@ Widget desktopLoginView(BuildContext context) {
                             height: 30,
                             width: 30,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           const Text("Sign in with Microsoft",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 15,
                                   color: Color(0XFF5E5E5E))),
-                          Spacer(),
+                          const Spacer(),
                         ],
                       ),
                     ),
@@ -719,7 +740,19 @@ Widget desktopLoginView(BuildContext context) {
               children: [
                 const Spacer(),
                 ElevatedButton(
-                  onPressed: () async {},
+                  onPressed: () async {
+                    try {
+                      await GoogleAuthHandler.handleSignIn().then((value) {
+                        if (value != null) {
+                          locator<RouterService>().replaceWithDashboardView();
+                        } else {
+                          throw Exception("User canceled the sign-in process.");
+                        }
+                      });
+                    } catch (e) {
+                      log("Error during Google sign-in: $e");
+                    }
+                  },
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all(
                         const EdgeInsets.only(left: 12)),
@@ -741,13 +774,13 @@ Widget desktopLoginView(BuildContext context) {
                             height: 25,
                             width: 25,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           const Text("Sign in with Google",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 15,
                                   color: Color(0XFF5E5E5E))),
-                          Spacer(),
+                          const Spacer(),
                         ],
                       ),
                     ),

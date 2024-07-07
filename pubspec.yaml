@@ -14,12 +14,14 @@ dependencies:
   js:
   dio:
   get:
+  http:
   intl:
   lottie:
   stacked:
   aad_oauth:
   url_strategy:
   firebase_core:
+  firebase_auth:
   google_sign_in:
   stacked_shared:
   cloud_firestore:
