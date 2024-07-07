@@ -1,0 +1,53 @@
+name: acadameet
+description: "An App that books appointments physical or video meeting between students and and their college faculty."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  #  flutter_web_plugins:
+  #    sdk: flutter       should only be used if you want to change the UrlStrategy to PathUrlStrategy()
+  flutter:
+    sdk: flutter
+  dio:
+  http:
+  go_router:
+  firebase_core:
+  firebase_auth:
+  google_sign_in:
+  cloud_firestore:
+  responsive_web_layout:
+    path: /home/tratum/Coding/flutter-repo/Packages/responsiveLayout/responsive-web-layout
+
+dev_dependencies:
+  flutter_lints:
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: GlacialIndifference
+      fonts:
+        - asset: assets/fonts/GlacialIndifference/GlacialIndifference-Regular.otf
+        - asset: assets/fonts/GlacialIndifference/GlacialIndifference-Bold.otf
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages

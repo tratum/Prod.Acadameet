@@ -1,0 +1,14 @@
+{
+  "flutter": {
+    "platforms": {
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "acadameet-aed1b",
+          "configurations": {
+            "web": "1:207060401514:web:2694f4212f80f8551c3913"
+          }
+        }
+      }
+    }
+  }
+}
