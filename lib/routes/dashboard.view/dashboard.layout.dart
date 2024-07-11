@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../app/app.common.functions.dart';
 import '../../app/app.constants.dart';
 
 Widget desktopDashboardLayout(BuildContext context) {
+  final userState = Provider.of<GoogleUserStateProvider>(context).userState;
   return SafeArea(
       child: Row(
     mainAxisSize: MainAxisSize.min,
@@ -41,7 +44,7 @@ Widget desktopDashboardLayout(BuildContext context) {
                       "Acadameet",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'GlacialIndifference',
+                        fontFamily: 'Outfit',
                         color: Color(0XFF000000),
                         fontSize: 28,
                       ),
@@ -62,7 +65,7 @@ Widget desktopDashboardLayout(BuildContext context) {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w500,
-                        fontFamily: 'GlacialIndifference',
+                        fontFamily: 'Outfit',
                         color: Color(0XFF111111),
                       ),
                     ),
@@ -82,7 +85,7 @@ Widget desktopDashboardLayout(BuildContext context) {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w500,
-                        fontFamily: 'GlacialIndifference',
+                        fontFamily: 'Outfit',
                         color: Color(0XFF111111),
                       ),
                     ),
@@ -102,7 +105,7 @@ Widget desktopDashboardLayout(BuildContext context) {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w500,
-                        fontFamily: 'GlacialIndifference',
+                        fontFamily: 'Outfit',
                         color: Color(0XFF111111),
                       ),
                     ),
@@ -122,7 +125,7 @@ Widget desktopDashboardLayout(BuildContext context) {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w500,
-                        fontFamily: 'GlacialIndifference',
+                        fontFamily: 'Outfit',
                         color: Color(0XFF111111),
                       ),
                     ),
@@ -153,7 +156,7 @@ Widget desktopDashboardLayout(BuildContext context) {
                       decoration: InputDecoration(
                         hintText: "Search",
                         hintStyle: TextStyle(
-                          fontFamily: 'GlacialIndifference',
+                          fontFamily: 'Outfit',
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           color: Color(0XFF6F6E7C),
@@ -175,15 +178,15 @@ Widget desktopDashboardLayout(BuildContext context) {
                     color: Color(0XFF6C9191),
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(top: 30, right: 40, left: 20),
                   child: CircleAvatar(
                     radius: 14,
                     backgroundColor: Color(0XFF292929),
-                    backgroundImage: NetworkImage(
-                      scale: 1,
-                      "https://tratum.github.io/cloud-asset-storage/images/sample-profile-icon.webp",
-                    ),
+                    backgroundImage: userState?.user?.photoURL != null
+                        ? NetworkImage(userState!.user!.photoURL!)
+                        : NetworkImage(
+                            "https://tratum.github.io/cloud-asset-storage/images/sample-profile-icon.webp"),
                   ),
                 ),
               ],
@@ -196,7 +199,7 @@ Widget desktopDashboardLayout(BuildContext context) {
                   "Appointments",
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontFamily: 'GlacialIndifference',
+                    fontFamily: 'Outfit',
                     color: Color(0XFF000000),
                     fontSize: 32,
                   ),
@@ -210,7 +213,7 @@ Widget desktopDashboardLayout(BuildContext context) {
                         "Add",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontFamily: 'GlacialIndifference',
+                          fontFamily: 'Outfit',
                           color: Color(0XFF000000),
                           fontSize: 24,
                         ),

@@ -140,17 +140,18 @@ Widget desktopLoginLayout(BuildContext context) {
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () async {
-                    try {
-                      await GoogleAuthHandler.handleSignIn().then((value) {
-                        if (value != null) {
-                          context.go('/dashboard');
-                        } else {
-                          throw Exception("User canceled the sign-in process.");
-                        }
-                      });
-                    } catch (e) {
-                      log("Error during Google sign-in: $e");
-                    }
+                    GoogleAuthHandler.signInHandler(context);
+                    // try {
+                    //   await GoogleAuthHandler.handleSignIn().then((value) {
+                    //     if (value != null) {
+                    //       context.go('/dashboard');
+                    //     } else {
+                    //       throw Exception("User canceled the sign-in process.");
+                    //     }
+                    //   });
+                    // } catch (e) {
+                    //   log("Error during Google sign-in: $e");
+                    // }
                   },
                   style: ButtonStyle(
                     padding: WidgetStateProperty.all(

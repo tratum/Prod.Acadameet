@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
   dio:
   http:
+  provider:
   go_router:
   firebase_core:
   firebase_auth:
@@ -31,6 +32,9 @@ flutter:
       fonts:
         - asset: assets/fonts/GlacialIndifference/GlacialIndifference-Regular.otf
         - asset: assets/fonts/GlacialIndifference/GlacialIndifference-Bold.otf
+    - family: Outfit
+      fonts:
+        - asset: assets/fonts/Outfit/Outfit-VariableFont_wght.ttf
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

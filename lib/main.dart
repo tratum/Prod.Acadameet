@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
+import 'app/app.common.functions.dart';
 import 'firebase_options.dart';
 import 'routes/404.view/404.view.dart';
 import 'routes/dashboard.view/dashboard.view.dart';
@@ -16,7 +18,12 @@ void main() {
   Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const App());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => GoogleUserStateProvider(),
+      child: const App(),
+    ),
+  );
 }
 
 final GoRouter _gRouter = GoRouter(
