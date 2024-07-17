@@ -9709,7 +9709,7 @@ var $async$aDr=A.G(function(a2,a3){if(a2===1){o=a3
 s=p}while(true)switch(s){case 0:p=4
 A.aDI()
 n=A.aQA(new A.ut(A.aH(t.C)),new A.Me(A.aJ9("Bearer",a1,new A.aC(Date.now(),!1).C(0,B.oN).oM()),null,A.a([u.F],t.s)))
-m=c+"\n\nMeeting Details:\n  Date: "+d+"\n  Time: "+e+"\n  Meeting Type: Video Meeting\n\nMeeting Link: "+a0+"\n      \nThis is an automated notification from Acadameet, a web application facilitating appointments between students and faculty members. \nTo learn more about our service and explore additional features, please visit our website: https://acadameet.tratum.dev/\n\nBest regards,\nThe Acadameet Team\n    "
+m=c+"\n\nMeeting Details:\n  Date: "+d+"\n  Time: "+e+"\n  Meeting Type: Video Meeting\n\nMeeting Link: "+a0+"\n      \nThis is an automated notification from Acadameet, a web application facilitating appointments between students and faculty members.\n\nTo learn more about our service and explore additional features, please visit our website: https://acadameet.tratum.dev/\n\nBest regards,\nThe Acadameet Team\n    "
 l=new A.acY(new A.Mw(n,"https://gmail.googleapis.com/","",$.aJ0()))
 k=A.b77(a,"me",b,m)
 s=7
@@ -114477,4 +114477,3 @@ return}var s=document.scripts
 function onLoad(b){for(var q=0;q<s.length;++q){s[q].removeEventListener("load",onLoad,false)}a(b.target)}for(var r=0;r<s.length;++r){s[r].addEventListener("load",onLoad,false)}})(function(a){v.currentScript=a
 var s=A.aDa
 if(typeof dartMainRunner==="function"){dartMainRunner(s,[])}else{s([])}})})()
-//# sourceMappingURL=main.dart.js.map
