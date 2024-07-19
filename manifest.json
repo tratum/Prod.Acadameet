@@ -1,11 +1,12 @@
 {
-  "name": "acadameet",
-  "short_name": "acadameet",
+  "name": "Acadameet",
+  "short_name": "Acadameet",
+  "id": "/acadameet.tratum.dev/",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#0175C2",
+  "background_color": "#FFFFFF",
   "theme_color": "#0175C2",
-  "description": "A new Flutter project.",
+  "description": "Acadameet: Streamlined Academic Appointment Scheduling for Enhanced Coordination and Communication between Students and Faculty.",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [
