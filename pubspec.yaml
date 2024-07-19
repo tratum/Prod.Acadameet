@@ -1,3 +1,4 @@
+#file: noinspection DartPathPackageReference
 name: acadameet
 description: "An App that books appointments physical or video meeting between students and and their college faculty."
 publish_to: 'none'
@@ -13,14 +14,19 @@ dependencies:
     sdk: flutter
   dio:
   http:
+  intl:
+  lottie:
   provider:
   go_router:
-  firebase_core:
-  firebase_auth:
+  googleapis:
+  googleapis_auth:
   google_sign_in:
-  cloud_firestore:
+  flutter_secure_storage:
+  firebase_core: ^3.2.0
+  firebase_auth: ^5.1.2
+  cloud_firestore: ^5.1.0
   responsive_web_layout:
-    path: /home/tratum/Coding/flutter-repo/Packages/responsiveLayout/responsive-web-layout
+    path: /home/tratum/Coding/code.flutter/Packages/responsiveLayout/responsive-web-layout
 
 dev_dependencies:
   flutter_lints:
@@ -28,13 +34,12 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   fonts:
-    - family: GlacialIndifference
+    - family: JosefinaSans
       fonts:
-        - asset: assets/fonts/GlacialIndifference/GlacialIndifference-Regular.otf
-        - asset: assets/fonts/GlacialIndifference/GlacialIndifference-Bold.otf
+        - asset: assets/fonts/JosefinaSans/JosefinSans-Regular.ttf
     - family: Outfit
       fonts:
-        - asset: assets/fonts/Outfit/Outfit-VariableFont_wght.ttf
+        - asset: assets/fonts/Outfit/Outfit-Regular.ttf
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

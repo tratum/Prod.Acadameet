@@ -1,3 +1,5 @@
+import 'package:acadameet/routes/home.view/home.view.dart';
+import 'package:acadameet/routes/signup.view/signup.view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -7,23 +9,20 @@ import 'app/app.common.functions.dart';
 import 'firebase_options.dart';
 import 'routes/404.view/404.view.dart';
 import 'routes/dashboard.view/dashboard.view.dart';
-import 'routes/login.view/login.view.dart';
 
 // import 'package:flutter_web_plugins/flutter_web_plugins.dart'; should only be used if you want to change the UrlStrategy
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // setUrlStrategy(PathUrlStrategy()); If this is used then client-side routing doesn't work properly.
   // setUrlStrategy(HashUrlStrategy()); This is used by default and client-side routing works properly but URLs include a /#/ segment.
-  Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => GoogleUserStateProvider(),
-      child: const App(),
-    ),
-  );
+  runApp(ChangeNotifierProvider(
+    create: (context) => AuthenticationProvider(),
+    child: const App(),
+  ));
 }
 
 final GoRouter _gRouter = GoRouter(
@@ -31,13 +30,28 @@ final GoRouter _gRouter = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const LoginView(),
+      builder: (context, state) => const HomeView(),
     ),
     GoRoute(
       path: '/dashboard',
-      builder: (context, state) => const DashboardView(),
+      builder: (context, state) {
+        final token = state.extra as String? ?? 'No secret';
+        return DashboardView(accessToken: token);
+      },
+    ),
+    GoRoute(
+      path: '/signup',
+      builder: (context, state) => const SignUpView(),
     ),
   ],
+  redirect: (context, state) {
+    if (getCurrentUID() != null && state.path == '/') {
+      return '/dashboard';
+    } else if (getCurrentUID() == null && state.path == '/dashboard') {
+      return '/';
+    }
+    return null;
+  },
   errorBuilder: (context, state) => const ErrorView(),
 );
 

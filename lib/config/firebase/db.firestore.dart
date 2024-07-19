@@ -1,7 +1,12 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../app/app.common.functions.dart';
 import '../keys/keys.dart';
+
+final db = FirebaseFirestore.instance;
 
 class Database {
   static void storeAuthData({
@@ -12,9 +17,7 @@ class Database {
     required String mail,
     required String bPhone,
   }) {
-    final FirebaseFirestore store = FirebaseFirestore.instance;
-
-    store.collection('UserAuthData').doc(fName + lName + id).set(
+    db.collection('UserAuthData').doc(fName + lName + id).set(
       {
         "id": id,
         "name": "$fName $lName",
@@ -25,6 +28,77 @@ class Database {
         "secretKey": firebaseSecretKey,
       },
     ).onError((e, _) => debugPrint("Error writing document: $e"));
+  }
+
+  static void syncGoogleUser() {
+    if (getCurrentUID() != null) {
+      final userData = <String, dynamic>{
+        "uid": getCurrentUID(),
+        "name": getCurrentUser()?.displayName,
+        "email": getCurrentUser()?.email,
+        "joinedAt": Timestamp.now(),
+        "secretKey": firebaseSecretKey,
+      };
+      db.collection('Users').doc(getCurrentUID()).set(userData).onError(
+            (error, stackTrace) =>
+                throw Exception("Error while Syncing User $error $stackTrace"),
+          );
+    } else {
+      log("No User has Signed-In yet");
+    }
+  }
+
+  static Future<void> syncMeetings({
+    required String subject,
+    required String recipient,
+    required String body,
+    required String eventDate,
+    required String eventTime,
+    required DateTime eventTimeStamp,
+    required List<String> attendees,
+    String? videoEventSummary,
+    String? videoEventLink,
+    String? videoEventDate,
+    String? videoEventTime,
+    DateTime? videoEventTimeStamp,
+    int? meetDuration,
+  }) async {
+    String? uid = getCurrentUID();
+    if (uid == null) {
+      throw Exception("No user signed in");
+    }
+    final meetingData = <String, dynamic>{
+      "subject": subject,
+      "recipient": recipient,
+      "body": body,
+      "eventDate": eventDate,
+      "eventTime": eventTime,
+      "eventTimeStamp": eventTimeStamp,
+      "eventSummary": videoEventSummary,
+      "videoEventDate": videoEventDate,
+      "videoEventTime": videoEventTime,
+      "videoEventLink": videoEventLink,
+      "videoEventTimeStamp": videoEventTimeStamp,
+      "videoEventDurationInMinutes": meetDuration,
+      "attendees": attendees,
+      "createdBy": uid,
+      "createdAt": Timestamp.now(),
+      "secretKey": firebaseSecretKey,
+    };
+
+    final meetingDocRef = await db.collection('meetings').add(meetingData);
+
+    for (int i = 0; i < attendees.length; i++) {
+      String attendee = attendees[i];
+      final userMeetingData = <String, dynamic>{
+        "userMail": attendee,
+        "meetingId": meetingDocRef.id,
+        "role": i == 0 ? "organizer" : "participant",
+        "status": "accepted",
+        "secretKey": firebaseSecretKey,
+      };
+      await db.collection('userMeetings').add(userMeetingData);
+    }
   }
 
 // static void sendMeetingData({

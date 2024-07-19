@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_web_layout/responsive_web_layout.dart';
 
-import 'login.layout.dart';
+import 'home.layout.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0XFFFFFFFF),
       body: SafeArea(
         child: ResponsiveWebLayout.buildPlatformSpecificLayout(
           context: context,
