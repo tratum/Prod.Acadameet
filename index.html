@@ -58,14 +58,31 @@
     <script defer src="manifestLoader.js"></script>
 </head>
 <body>
-  <div id="loader-content" class="main-content">
-    <div class="skeleton skeleton-header"></div>
-    <div class="skeleton skeleton-title"></div>
-    <div class="skeleton skeleton-subtitle"></div>
-    <div class="skeleton skeleton-button"></div>
-    <div class="skeleton skeleton-button"></div>
-    <div class="skeleton skeleton-text"></div>
-</div>
+    <div id="loader-content" class="main-content">
+        <div class="header">
+            <div class="skeleton skeleton-logo"></div>
+            <div class="skeleton skeleton-nav-item"></div>
+            <div class="skeleton skeleton-nav-item"></div>
+            <div class="skeleton skeleton-nav-item"></div>
+            <div class="skeleton skeleton-button"></div>
+            <div class="skeleton skeleton-button"></div>
+        </div>
+        <div class="content">
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-row">
+                <div class="skeleton skeleton-word"></div>
+                <div class="skeleton skeleton-word"></div>
+                <div class="skeleton skeleton-word"></div>
+            </div>
+            <div class="skeleton skeleton-subtitle"></div>
+            <div class="skeleton skeleton-subtitle"></div>
+            <div class="skeleton skeleton-button"></div>
+            <div class="skeleton skeleton-button"></div>
+            <div class="skeleton skeleton-divider"></div>
+            <div class="skeleton skeleton-link"></div>
+            <div class="skeleton skeleton-text"></div>
+        </div>
+    </div>
 <script>
     window.addEventListener('load', function(ev) {
         var loaderContent = document.getElementById('loader-content');
