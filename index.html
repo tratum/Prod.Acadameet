@@ -84,17 +84,19 @@
     </div>
 </div>
 <script type="module">
-        window.addEventListener('load', function(ev) {
-            var loaderContent = document.getElementById('loader-content');
-            _flutter.loader.load().then(async function (appRunner) {
+    window.addEventListener('load', function(ev) {
+        var loaderContent = document.getElementById('loader-content');
+        _flutter.loader.load({
+            onEntrypointLoaded: async function(engineInitializer){
                 loaderContent.style.visibility = 'hidden';
                 loaderContent.style.opacity = '0';
-                loaderContent.style.pointerEvents = 'none';                
-            }).catch(function(error) {
-                console.error('Error during initialization:', error);
-            });
-        });
-    </script>
+                loaderContent.style.pointerEvents = 'none';
+                const appRunner = await engineInitializer.initializeEngine();
+                await appRunner.runApp();
+            }
+        })
+    });
+</script>
 <script async src="flutter_bootstrap.js"></script>
 </body>
 </html>
