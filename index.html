@@ -42,6 +42,7 @@
 
     <!-- Favicon -->
     <link href="favicon.png" rel="icon" type="image/png">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Preconnect to required origins -->
     <link rel="preconnect" href="https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5WZLCzYlKw.ttf">
@@ -57,6 +58,29 @@
     <script defer src="manifestLoader.js"></script>
 </head>
 <body>
+  <div id="loader-content" class="main-content">
+    <div class="skeleton skeleton-header"></div>
+    <div class="skeleton skeleton-title"></div>
+    <div class="skeleton skeleton-subtitle"></div>
+    <div class="skeleton skeleton-button"></div>
+    <div class="skeleton skeleton-button"></div>
+    <div class="skeleton skeleton-text"></div>
+</div>
+<script>
+    window.addEventListener('load', function(ev) {
+        var loaderContent = document.getElementById('loader-content');
+        _flutter.loader.loadEntrypoint({
+            serviceWorker: {
+                serviceWorkerVersion: serviceWorkerVersion,
+            }
+        }).then(function (engineInitializer) {
+            return engineInitializer.initializeEngine();
+        }).then(async function (appRunner) {
+            loaderContent.style.display = 'none';
+            await appRunner.runApp();
+        });
+    });
+</script>
 <script async src="flutter_bootstrap.js"></script>
 </body>
 </html>
