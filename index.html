@@ -19,6 +19,7 @@
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="author" content="tratum(Saksham Rawat)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=6.0, user-scalable=yes">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'none'">
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
     <meta content="Streamlined Academic Appointment Scheduling for Enhanced Coordination and Communication between Students and Faculty." name="description">
 
@@ -83,21 +84,23 @@
             <div class="skeleton skeleton-text"></div>
         </div>
     </div>
-<script>
-    window.addEventListener('load', function(ev) {
-        var loaderContent = document.getElementById('loader-content');
-        _flutter.loader.loadEntrypoint({
-            serviceWorker: {
-                serviceWorkerVersion: serviceWorkerVersion,
-            }
-        }).then(function (engineInitializer) {
-            return engineInitializer.initializeEngine();
-        }).then(async function (appRunner) {
-            loaderContent.style.display = 'none';
-            await appRunner.runApp();
+    <script>
+        window.addEventListener('load', function(ev) {
+            var loaderContent = document.getElementById('loader-content');
+            _flutter.loader.loadEntrypoint({
+                serviceWorker: {
+                    serviceWorkerVersion: serviceWorkerVersion,
+                }
+            }).then(function (engineInitializer) {
+                return engineInitializer.initializeEngine();
+            }).then(async function (appRunner) {
+                loaderContent.style.visibility = 'hidden';
+                loaderContent.style.opacity = '0';
+                loaderContent.style.pointerEvents = 'none';
+                await appRunner.runApp();
+            });
         });
-    });
-</script>
+    </script>
 <script async src="flutter_bootstrap.js"></script>
 </body>
 </html>
