@@ -87,11 +87,7 @@
     <script>
         window.addEventListener('load', function(ev) {
             var loaderContent = document.getElementById('loader-content');
-            _flutter.loader.loadEntrypoint({
-                serviceWorker: {
-                    serviceWorkerVersion: serviceWorkerVersion,
-                }
-            }).then(function (engineInitializer) {
+            _flutter.loader.loadEntrypoint().then(function (engineInitializer) {
                 return engineInitializer.initializeEngine();
             }).then(async function (appRunner) {
                 loaderContent.style.visibility = 'hidden';
