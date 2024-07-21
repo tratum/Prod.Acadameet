@@ -1,35 +1,35 @@
 {
   "name": "Acadameet",
   "short_name": "Acadameet",
-  "id": "/acadameet.tratum.dev/",
+  "id": "/",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#0175C2",
-  "description": "Acadameet: Streamlined Academic Appointment Scheduling for Enhanced Coordination and Communication between Students and Faculty.",
+  "description": "Streamlined Academic Appointment Scheduling for Enhanced Coordination and Communication between Students and Faculty.",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "icons/Icon-192.png",
+      "src": "icons/Icon-192.webp",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/webp"
     },
     {
-      "src": "icons/Icon-512.png",
+      "src": "icons/Icon-512.webp",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/webp"
     },
     {
-      "src": "icons/Icon-maskable-192.png",
+      "src": "icons/Icon-maskable-192.webp",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "maskable"
     },
     {
-      "src": "icons/Icon-maskable-512.png",
+      "src": "icons/Icon-maskable-512.webp",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "maskable"
     }
   ]
