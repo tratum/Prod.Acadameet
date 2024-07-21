@@ -14,7 +14,6 @@
       This is a placeholder for base href that will be replaced by the value of
       the `--base-href` argument provided to `flutter build`.
     -->
-    <base href="/">
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -87,12 +86,7 @@
 <script type="module">
         window.addEventListener('load', function(ev) {
             var loaderContent = document.getElementById('loader-content');
-            _flutter.loader.load().then(function (engineInitializer) {
-                if (!engineInitializer || typeof engineInitializer.initializeEngine !== 'function') {
-                    throw new Error('Failed to initialize engine');
-                }
-                return engineInitializer.initializeEngine();
-            }).then(async function (appRunner) {
+            _flutter.loader.load().then(async function (appRunner) {
                 loaderContent.style.visibility = 'hidden';
                 loaderContent.style.opacity = '0';
                 loaderContent.style.pointerEvents = 'none';
