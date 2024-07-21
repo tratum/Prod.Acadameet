@@ -88,12 +88,17 @@
         window.addEventListener('load', function(ev) {
             var loaderContent = document.getElementById('loader-content');
             _flutter.loader.load().then(function (engineInitializer) {
+                if (!engineInitializer || typeof engineInitializer.initializeEngine !== 'function') {
+                    throw new Error('Failed to initialize engine');
+                }
                 return engineInitializer.initializeEngine();
             }).then(async function (appRunner) {
                 loaderContent.style.visibility = 'hidden';
                 loaderContent.style.opacity = '0';
                 loaderContent.style.pointerEvents = 'none';
                 await appRunner.runApp();
+            }).catch(function(error) {
+                console.error('Error during initialization:', error);
             });
         });
     </script>
