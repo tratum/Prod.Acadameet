@@ -89,8 +89,7 @@
             _flutter.loader.load().then(async function (appRunner) {
                 loaderContent.style.visibility = 'hidden';
                 loaderContent.style.opacity = '0';
-                loaderContent.style.pointerEvents = 'none';
-                await appRunner.load();
+                loaderContent.style.pointerEvents = 'none';                
             }).catch(function(error) {
                 console.error('Error during initialization:', error);
             });
