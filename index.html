@@ -90,7 +90,7 @@
                 loaderContent.style.visibility = 'hidden';
                 loaderContent.style.opacity = '0';
                 loaderContent.style.pointerEvents = 'none';
-                await appRunner.runApp();
+                await appRunner.load();
             }).catch(function(error) {
                 console.error('Error during initialization:', error);
             });
