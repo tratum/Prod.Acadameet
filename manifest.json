@@ -36,13 +36,13 @@
   "screenshots": [
     {
       "src": "screenshots/desktop-wide.webp",
-      "sizes": "1898x934",
+      "sizes": "1024x768",
       "type": "image/webp",
       "form_factor": "wide"
     },
     {
       "src": "screenshots/mobile.webp",
-      "sizes": "370x848",
+      "sizes": "360x640",
       "type": "image/webp",
       "form_factor": "narrow"
     }
