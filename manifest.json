@@ -2,10 +2,10 @@
   "name": "Acadameet",
   "short_name": "Acadameet",
   "id": "/",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",
-  "theme_color": "#0175C2",
+  "theme_color": "#492224",
   "description": "Streamlined Academic Appointment Scheduling for Enhanced Coordination and Communication between Students and Faculty.",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
@@ -31,6 +31,19 @@
       "sizes": "512x512",
       "type": "image/webp",
       "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/desktop-wide.webp",
+      "sizes": "1024x768",
+      "type": "image/webp",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshots/mobile.webp",
+      "sizes": "360x640",
+      "type": "image/webp"
     }
   ]
 }
