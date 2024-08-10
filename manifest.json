@@ -43,7 +43,8 @@
     {
       "src": "screenshots/mobile.webp",
       "sizes": "360x640",
-      "type": "image/webp"
+      "type": "image/webp",
+      "form_factor": "narrow"
     }
   ]
 }
